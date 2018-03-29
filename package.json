@@ -23,5 +23,10 @@
     "coveralls": "3",
     "lab": "14",
     "prettier": "1"
-  }
+  },
+  "files":[
+    "README.md",
+    "LICENSE",
+    "nua.js"
+  ]
 }
