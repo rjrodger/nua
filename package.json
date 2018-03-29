@@ -1,0 +1,27 @@
+{
+  "name": "nua",
+  "version": "0.0.1",
+  "description": "Reference-preserving merge",
+  "main": "nua.js",
+  "scripts": {
+    "test": "lab -P test -t 100",
+    "prettier": "prettier --write --no-semi --single-quote *.js lib/*.js test/*.js",
+    "coveralls": "lab -s -P test -r lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjrodger/nua.git"
+  },
+  "author": "Richard Rodger (richardrodger.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rjrodger/nua/issues"
+  },
+  "homepage": "https://github.com/rjrodger/nua#readme",
+  "devDependencies": {
+    "code": "4",
+    "coveralls": "3",
+    "lab": "14",
+    "prettier": "1"
+  }
+}
