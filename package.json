@@ -1,10 +1,10 @@
 {
   "name": "nua",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Reference-preserving merge",
   "main": "nua.js",
   "scripts": {
-    "test": "lab -P test -t 100",
+    "test": "lab -P test -t 90",
     "prettier": "prettier --write --no-semi --single-quote *.js lib/*.js test/*.js",
     "coveralls": "lab -s -P test -r lcov | coveralls"
   },
