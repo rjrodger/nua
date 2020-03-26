@@ -1,14 +1,15 @@
+/* Copyright (c) 2018-2020 Richard Rodger and other contributors */
 'use strict'
 
-const Lab = require('lab')
-const Code = require('code')
+const Lab = require('@hapi/lab')
+const Code = require('@hapi/code')
 const lab = (exports.lab = Lab.script())
 const expect = Code.expect
 
 const Nua = require('..')
 
 
-lab.test('happy', fin => {
+lab.test('happy', () => {
   var base = {a:{b:1}}
   var base_a = base.a
   var src = {a:{b:2}}
@@ -16,13 +17,11 @@ lab.test('happy', fin => {
   Nua(base,src)
   expect(base).equal({a:{b:2}})
   expect(base_a === base.a).true()
-
-  fin()
 })
 
 
 
-lab.test('null-fields', fin => {
+lab.test('null-fields', () => {
   var base = {a:1,b:null,c:4,d:5}
   var src = {a:2,b:3,c:null,e:6}
 
@@ -35,13 +34,49 @@ lab.test('null-fields', fin => {
     // d is removed as not present in src
     e: 6 // defined in src
   })
+})
+
+
+lab.test('depth', () => {
+  var src = {a:11,b:{c:22},d:{e:{f:33}}}
+
+  var base0 = {a:1,b:{c:2},d:{e:{f:3}}}
+  var base0b = base0.b
+  var base0d = base0.d
+  var base0e = base0.d.e
+  Nua(base0,src,4)
+  expect(base0).equal(src)
+  expect(base0b === base0.b).true()
+  expect(base0d === base0.d).true()
+  expect(base0e === base0.d.e).true()
   
-  fin()
+  
+  var base1 = {a:1,b:{c:2},d:{e:{f:3}}}
+  Nua(base1,src,3)
+  expect(base1).equal(src)
+
+  var base2 = {a:1,b:{c:2},d:{e:{f:3}}}
+  Nua(base2,src,2)
+  expect(base2).equal({ a: 11, b: { c: 22 }, d: { e: { f: 3 } } })
+
+  var base3 = {a:1,b:{c:2},d:{e:{f:3}}}
+  var base3b = base3.b
+  var base3d = base3.d
+  var base3e = base3.d.e
+  Nua(base3,src,1)
+  expect(base3).equal({ a: 11, b: { c: 2 }, d: { e: { f: 3 } } })
+  expect(base3b === base3.b).true()
+  expect(base3d === base3.d).true()
+  expect(base3e === base3.d.e).true()
+
+  var base4 = {a:1,b:{c:2},d:{e:{f:3}}}
+  Nua(base4,src,0)
+  expect(base4).equal(src)
 })
 
 
 
-lab.test('array', fin => {
+lab.test('array', () => {
   var base = {a:[1,2]}
   var base_a = base.a
 
@@ -57,11 +92,15 @@ lab.test('array', fin => {
   expect(base).equal({a:[11]})
   expect(base_a === base.a).true()
 
-  fin()
+  Nua(base,{a:{b:1}})
+  var a = base.a
+  a.b = 1
+  expect(base).equal({a:a})
+  expect(base_a === base.a).true()
 })
 
 
-lab.test('object', fin => {
+lab.test('object', () => {
   var base = {a:{b:1,c:2}}
   var base_a = base.a
 
@@ -76,12 +115,10 @@ lab.test('object', fin => {
   Nua(base,{a:{b:11}})
   expect(base).equal({a:{b:11}})
   expect(base_a === base.a).true()
-
-  fin()
 })
 
 
-lab.test('deep', fin => {
+lab.test('deep', () => {
   var base = {a:{c:1,d:{e:3,f:[5,{h:7}]}}, b:[2,[4],{g:[6]}]}
   var base_a = base.a
   var base_ad = base.a.d
@@ -108,8 +145,6 @@ lab.test('deep', fin => {
   Nua(base,{a:{c:{},d:{e:3,f:[5,{h:7}]}}, b:2})
   expect(base).equal({a:{c:1,d:{e:3,f:[5,{h:7}]}}, b:[2,[4],{g:[6]}]})
 
-  //return fin()
-  
   Nua(base,{a:{c:11,d:{e:33,f:[55,{h:77}]}}, b:[22,[44],{g:[66]}]})
   expect(base).equal({a:{c:11,d:{e:33,f:[55,{h:77}]}}, b:[22,[44],{g:[66]}]})
   expect(base_a === base.a).true()
@@ -172,6 +207,5 @@ lab.test('deep', fin => {
   expect(src_b2 === base.b[2]).true()
   expect(src_b2g === base.b[2].g).true()
 
-  fin()
 })
 

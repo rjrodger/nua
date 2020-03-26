@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Richard Rodger and other contributors */
+/* Copyright (c) 2018-2020 Richard Rodger and other contributors */
 'use strict'
 
 
@@ -8,6 +8,7 @@
 
 module.exports = function Nua(base, src, depth) {
   var max_depth = depth || Number.MAX_VALUE
+  //console.log('MD', max_depth)
   
   if('object' === typeof(base) && 'object' === typeof(src)) {
     walk(base, src, 0)
@@ -15,14 +16,13 @@ module.exports = function Nua(base, src, depth) {
 
   function walk(base, src, depth_in) {
     if( null == base || null == src || max_depth <= depth_in ) return;
-    //if( null == base || null == src ) return
-    // console.log('BASE',base,'SRC',src,typeof(base),typeof(src))
+    // console.log('W', max_depth, depth_in)
 
     var d = depth_in + 1
     
     if(Array.isArray(base) && Array.isArray(src)) {
       for(var i = 0; i < base.length; i++) {
-        if( d < max_depth && 'object' === typeof(base[i]) ){
+        if( /*d <= max_depth && */ 'object' === typeof(base[i]) ){
           walk(base[i], src[i], d)
         }
         else {
@@ -36,34 +36,34 @@ module.exports = function Nua(base, src, depth) {
     }
     else {
       var basekeys = Object.keys(base)
-      for(var i = 0; i < basekeys.length; i++) {
-        var baseval = base[basekeys[i]]
-        var srcval = src[basekeys[i]]
+      for(var bI = 0; bI < basekeys.length; bI++) {
+        var baseval = base[basekeys[bI]]
+        var srcval = src[basekeys[bI]]
         var basetype = null === baseval ? 'null' : typeof(baseval)
         var srctype = null === srcval ? 'null' : typeof(srcval)
                               
         if( 'object' === basetype && 'object' === srctype ) {
-          if( d < max_depth ) {
+          //if( true /*d <= max_depth*/ ) {
             walk(baseval, srcval, d)
-          }
-          else {
-            base[basekeys[i]] = srcval
-          }
+          //}
+          //else {
+          //  base[basekeys[bI]] = srcval
+          //}
         }
         else if( void 0 === srcval) {
-          delete base[basekeys[i]]
+          delete base[basekeys[bI]]
         }
 
         else if( 'object' !== basetype &&
                  'object' !== srctype ) {
-          base[basekeys[i]] = srcval
+          base[basekeys[bI]] = srcval
         }
       }
       
       var srckeys = Object.keys(src)
-      for(var i = 0; i < srckeys.length; i++) {
-        if( void 0 === base[srckeys[i]] ) {
-          base[srckeys[i]] = src[srckeys[i]]
+      for(var sI = 0; sI < srckeys.length; sI++) {
+        if( void 0 === base[srckeys[sI]] ) {
+          base[srckeys[sI]] = src[srckeys[sI]]
         }
       }
     }
