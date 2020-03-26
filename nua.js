@@ -37,24 +37,29 @@ module.exports = function Nua(base, src, depth) {
     else {
       var basekeys = Object.keys(base)
       for(var i = 0; i < basekeys.length; i++) {
-        if( 'object' === typeof(base[basekeys[i]]) &&
-            'object' === typeof(src[basekeys[i]]) ) {
+        var baseval = base[basekeys[i]]
+        var srcval = src[basekeys[i]]
+        var basetype = null === baseval ? 'null' : typeof(baseval)
+        var srctype = null === srcval ? 'null' : typeof(srcval)
+                              
+        if( 'object' === basetype && 'object' === srctype ) {
           if( d < max_depth ) {
-            walk(base[basekeys[i]], src[basekeys[i]], d)
+            walk(baseval, srcval, d)
           }
           else {
-            base[basekeys[i]] = src[basekeys[i]]
+            base[basekeys[i]] = srcval
           }
         }
-        else if( void 0 === src[basekeys[i]]) {
+        else if( void 0 === srcval) {
           delete base[basekeys[i]]
         }
 
-        else if( 'object' !== typeof(base[basekeys[i]]) &&
-                 'object' !== typeof(src[basekeys[i]]) ) {
-          base[basekeys[i]] = src[basekeys[i]]
+        else if( 'object' !== basetype &&
+                 'object' !== srctype ) {
+          base[basekeys[i]] = srcval
         }
       }
+      
       var srckeys = Object.keys(src)
       for(var i = 0; i < srckeys.length; i++) {
         if( void 0 === base[srckeys[i]] ) {

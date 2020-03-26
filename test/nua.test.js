@@ -21,6 +21,26 @@ lab.test('happy', fin => {
 })
 
 
+
+lab.test('null-fields', fin => {
+  var base = {a:1,b:null,c:4,d:5}
+  var src = {a:2,b:3,c:null,e:6}
+
+  Nua(base,src)
+
+  expect(base).equal({
+    a: 2, // override
+    b: 3, // override (null is just a value)
+    c: null, // override (null is just a value)
+    // d is removed as not present in src
+    e: 6 // defined in src
+  })
+  
+  fin()
+})
+
+
+
 lab.test('array', fin => {
   var base = {a:[1,2]}
   var base_a = base.a
