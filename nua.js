@@ -4,9 +4,8 @@
 // TODO: is it necessary to copy scalar values?
 // TODO: test internal references
 
-module.exports = function Nua(base, src, depth) {
+module.exports = function Nua(base, src, depth, setter) {
   var max_depth = depth || Number.MAX_VALUE
-  //console.log('MD', max_depth)
 
   if ('object' === typeof base && 'object' === typeof src) {
     walk(base, src, 0)
@@ -23,11 +22,11 @@ module.exports = function Nua(base, src, depth) {
         if (/*d <= max_depth && */ 'object' === typeof base[i]) {
           walk(base[i], src[i], d)
         } else {
-          base[i] = src[i]
+          setter ? setter(base, i, src[i]) : (base[i] = src[i])
         }
       }
       for (; i < src.length; i++) {
-        base[i] = src[i]
+        setter ? setter(base, i, src[i]) : (base[i] = src[i])
       }
       base.splice(src.length)
     } else {
@@ -39,23 +38,32 @@ module.exports = function Nua(base, src, depth) {
         var srctype = null === srcval ? 'null' : typeof srcval
 
         if ('object' === basetype && 'object' === srctype) {
-          //if( true /*d <= max_depth*/ ) {
           walk(baseval, srcval, d)
-          //}
-          //else {
-          //  base[basekeys[bI]] = srcval
-          //}
         } else if (void 0 === srcval) {
           delete base[basekeys[bI]]
         } else if ('object' !== basetype && 'object' !== srctype) {
-          base[basekeys[bI]] = srcval
+          setter
+            ? setter(base, basekeys[bI], srcval)
+            : (base[basekeys[bI]] = srcval)
         }
       }
 
       var srckeys = Object.keys(src)
       for (var sI = 0; sI < srckeys.length; sI++) {
         if (void 0 === base[srckeys[sI]]) {
-          base[srckeys[sI]] = src[srckeys[sI]]
+          if (setter) {
+            setter(base, srckeys[sI], src[srckeys[sI]])
+
+            if (
+              null != src[srckeys[sI]] &&
+              (Array.isArray(src[srckeys[sI]]) ||
+                'object' === typeof src[srckeys[sI]])
+            ) {
+              walk(base[srckeys[sI]], src[srckeys[sI]], d)
+            }
+          } else {
+            base[srckeys[sI]] = src[srckeys[sI]]
+          }
         }
       }
     }

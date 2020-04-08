@@ -107,6 +107,9 @@ lab.test('object', () => {
   Nua(base, { a: { b: 11 } })
   expect(base).equal({ a: { b: 11 } })
   expect(base_a === base.a).true()
+
+  Nua(base, { a: { b: 11 }, c: { d: { e: 1 } } })
+  expect(base).equal({ a: { b: 11 }, c: { d: { e: 1 } } })
 })
 
 lab.test('deep', () => {
@@ -223,4 +226,27 @@ lab.test('deep', () => {
   expect(src_b1 === base.b[1]).true()
   expect(src_b2 === base.b[2]).true()
   expect(src_b2g === base.b[2].g).true()
+})
+
+lab.test('setter', () => {
+  var base = { a: 1, b: [2] }
+
+  function s0(obj, key, val) {
+    obj[key] = 'object' === typeof val ? val : val + 1
+  }
+
+  Nua(
+    base,
+    { a: 2, b: [3, 4], c: 5, d: { e: 6, g: [7], h: null }, f: null, h: [8] },
+    0,
+    s0
+  )
+  expect(base).equal({
+    a: 3,
+    b: [4, 5],
+    c: 6,
+    d: { e: 7, g: [8], h: null },
+    f: null,
+    h: [9],
+  })
 })
