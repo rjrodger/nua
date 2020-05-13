@@ -1,6 +1,6 @@
 {
   "name": "nua",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Reference-preserving merge",
   "main": "nua.js",
   "scripts": {
@@ -36,6 +36,7 @@
   "files": [
     "README.md",
     "LICENSE",
-    "nua.js"
+    "nua.js",
+    "nua.d.ts"
   ]
 }
