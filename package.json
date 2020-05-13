@@ -1,6 +1,6 @@
 {
   "name": "nua",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reference-preserving merge",
   "main": "nua.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "clean": "rm -rf node_modules package-lock.json yarn.lock",
     "reset": "npm run clean && npm i && npm build && npm test",
     "repo-tag": "REPO_VERSION=`node -e \"console.log(require('./package').version)\"` && echo TAG: v$REPO_VERSION && git commit -a -m v$REPO_VERSION && git push && git tag v$REPO_VERSION && git push --tags;",
-    "repo-publish-quick": "npm run prettier && npm build && npm test && npm run repo-tag --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
+    "repo-publish-quick": "npm run prettier && npm run build && npm test && npm run repo-tag --registry http://registry.npmjs.org && npm publish --registry http://registry.npmjs.org",
     "repo-publish": "npm run clean && npm i && npm run repo-publish-quick"
   },
   "repository": {
