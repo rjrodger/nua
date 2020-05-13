@@ -4,6 +4,8 @@
 [![Build Status][travis-badge]][travis-url]
 [![Coverage Status][coveralls-badge]][coveralls-url]
 [![Dependency Status][david-badge]][david-url]
+[![DeepScan grade](https://deepscan.io/api/teams/5016/projects/11447/branches/170759/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=5016&pid=11447&bid=170759)
+<a href="https://codeclimate.com/github/rjrodger/nua/maintainability"><img src="https://api.codeclimate.com/v1/badges/0f380e98b0fdd892fa76/maintainability" /></a>
 
 
 
