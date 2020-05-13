@@ -1,7 +1,5 @@
 /* Copyright (c) 2018-2020 Richard Rodger and other contributors */
 'use strict';
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Nua = void 0;
 function Nua(base, src, opts) {
     opts = opts || {};
     var max_depth = opts.depth || Number.MAX_VALUE;
@@ -69,5 +67,5 @@ function Nua(base, src, opts) {
         }
     }
 }
-exports.Nua = Nua;
+module.exports = Nua;
 //# sourceMappingURL=nua.js.map

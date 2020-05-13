@@ -547,7 +547,7 @@
           <div class="failures">0</div>
           <div class="skipped">0</div>
           <div class="test-count">8</div>
-          <div class="duration">26</div>
+          <div class="duration">24</div>
       </div>
       <div id="filters">
           <input type="checkbox" checked="" onchange="filter(this)" value="success" id="show-success">
@@ -570,28 +570,28 @@
               <td class="test-title">happy
                   
               </td>
-              <td class="test-duration">6</td>
+              <td class="test-duration">5</td>
           </tr>
           <tr class="show  success">
               <td class="test-id">2</td>
               <td class="test-title">null-fields
                   
               </td>
-              <td class="test-duration">2</td>
+              <td class="test-duration">1</td>
           </tr>
           <tr class="show  success">
               <td class="test-id">3</td>
               <td class="test-title">depth
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show  success">
               <td class="test-id">4</td>
               <td class="test-title">array
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">2</td>
           </tr>
           <tr class="show  success">
               <td class="test-id">5</td>
@@ -612,14 +612,14 @@
               <td class="test-title">setter
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           <tr class="show  success">
               <td class="test-id">8</td>
               <td class="test-title">preserve
                   
               </td>
-              <td class="test-duration">1</td>
+              <td class="test-duration">0</td>
           </tr>
           </tbody>
       </table>
@@ -628,8 +628,8 @@
         <h1>Code Coverage Report</h1>
         <div class="stats high">
             <div class="percentage">100%</div>
-            <div class="sloc">67</div>
-            <div class="hits">67</div>
+            <div class="sloc">68</div>
+            <div class="hits">68</div>
             <div class="misses">0</div>
         </div>
         <div id="filters">
@@ -641,8 +641,8 @@
                 <h2 id="nua.js">nua.js </h2>
                 <div class="stats high">
                     <div class="percentage">100%</div>
-                    <div class="sloc">67</div>
-                    <div class="hits">67</div>
+                    <div class="sloc">68</div>
+                    <div class="hits">68</div>
                     <div class="misses">0</div>
                 </div>
                 <table>
@@ -672,418 +672,412 @@
                           <td class="line" data-tooltip>3</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">// TODO: is it necessary to copy scalar values?</td>
+                          <td class="source">function Nua(base, src, opts) {</td>
                           
                         </tr>            <tr id="nua.js__4" class="hit">
                           <td class="line" data-tooltip>4</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">// TODO: test internal references</td>
+                          <td class="hits" data-tooltip>33</td>
+                          <td class="source">    opts &#x3D; opts || {};</td>
                           
                         </tr>            <tr id="nua.js__5" class="hit">
                           <td class="line" data-tooltip>5</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>1</td>
-                          <td class="source">module.exports &#x3D; function Nua(base, src, opts) {</td>
+                          <td class="hits" data-tooltip>33</td>
+                          <td class="source">    var max_depth &#x3D; opts.depth || Number.MAX_VALUE;</td>
                           
                         </tr>            <tr id="nua.js__6" class="hit">
                           <td class="line" data-tooltip>6</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    opts &#x3D; opts || {};</td>
+                          <td class="hits" data-tooltip>33</td>
+                          <td class="source">    var setter &#x3D; opts.setter;</td>
                           
                         </tr>            <tr id="nua.js__7" class="hit">
                           <td class="line" data-tooltip>7</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>33</td>
-                          <td class="source">    var max_depth &#x3D; opts.depth || Number.MAX_VALUE;</td>
+                          <td class="source">    var preserve &#x3D; !!opts.preserve;</td>
                           
                         </tr>            <tr id="nua.js__8" class="hit">
                           <td class="line" data-tooltip>8</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>33</td>
-                          <td class="source">    var setter &#x3D; opts.setter;</td>
+                          <td class="source">    if (&#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof base &amp;&amp; &#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof src) {</td>
                           
                         </tr>            <tr id="nua.js__9" class="hit">
                           <td class="line" data-tooltip>9</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>33</td>
-                          <td class="source">    var preserve &#x3D; !!opts.preserve;</td>
+                          <td class="hits" data-tooltip>30</td>
+                          <td class="source">        walk(base, src, 0);</td>
                           
                         </tr>            <tr id="nua.js__10" class="hit">
                           <td class="line" data-tooltip>10</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>33</td>
-                          <td class="source">    if (&#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof base &amp;&amp; &#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof src) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="nua.js__11" class="hit">
                           <td class="line" data-tooltip>11</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>30</td>
-                          <td class="source">        walk(base, src, 0);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">    function walk(base, src, depth_in) {</td>
                           
                         </tr>            <tr id="nua.js__12" class="hit">
                           <td class="line" data-tooltip>12</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="hits" data-tooltip>87</td>
+                          <td class="source">        if (null &#x3D;&#x3D; base || null &#x3D;&#x3D; src || max_depth &lt;&#x3D; depth_in)</td>
                           
                         </tr>            <tr id="nua.js__13" class="hit">
                           <td class="line" data-tooltip>13</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    function walk(base, src, depth_in) {</td>
+                          <td class="hits" data-tooltip>8</td>
+                          <td class="source">            return;</td>
                           
                         </tr>            <tr id="nua.js__14" class="hit">
                           <td class="line" data-tooltip>14</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>87</td>
-                          <td class="source">        if (null &#x3D;&#x3D; base || null &#x3D;&#x3D; src || max_depth &lt;&#x3D; depth_in)</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        // console.log(&#x27;W&#x27;, max_depth, depth_in)</td>
                           
                         </tr>            <tr id="nua.js__15" class="hit">
                           <td class="line" data-tooltip>15</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>8</td>
-                          <td class="source">            return;</td>
+                          <td class="hits" data-tooltip>79</td>
+                          <td class="source">        var d &#x3D; depth_in + 1;</td>
                           
                         </tr>            <tr id="nua.js__16" class="hit">
                           <td class="line" data-tooltip>16</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        // console.log(&#x27;W&#x27;, max_depth, depth_in)</td>
+                          <td class="hits" data-tooltip>79</td>
+                          <td class="source">        if (Array.isArray(base) &amp;&amp; Array.isArray(src)) {</td>
                           
                         </tr>            <tr id="nua.js__17" class="hit">
                           <td class="line" data-tooltip>17</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>79</td>
-                          <td class="source">        var d &#x3D; depth_in + 1;</td>
+                          <td class="hits" data-tooltip>17</td>
+                          <td class="source">            for (var i &#x3D; 0; i &lt; base.length; i++) {</td>
                           
                         </tr>            <tr id="nua.js__18" class="hit">
                           <td class="line" data-tooltip>18</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>79</td>
-                          <td class="source">        if (Array.isArray(base) &amp;&amp; Array.isArray(src)) {</td>
+                          <td class="hits" data-tooltip>31</td>
+                          <td class="source">                if ( /*d &lt;&#x3D; max_depth &amp;&amp; */&#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof base[i]) {</td>
                           
                         </tr>            <tr id="nua.js__19" class="hit">
                           <td class="line" data-tooltip>19</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>17</td>
-                          <td class="source">            for (var i &#x3D; 0; i &lt; base.length; i++) {</td>
+                          <td class="hits" data-tooltip>10</td>
+                          <td class="source">                    walk(base[i], src[i], d);</td>
                           
                         </tr>            <tr id="nua.js__20" class="hit">
                           <td class="line" data-tooltip>20</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>31</td>
-                          <td class="source">                if ( /*d &lt;&#x3D; max_depth &amp;&amp; */&#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof base[i]) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__21" class="hit">
                           <td class="line" data-tooltip>21</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>10</td>
-                          <td class="source">                    walk(base[i], src[i], d);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                else {</td>
                           
                         </tr>            <tr id="nua.js__22" class="hit">
                           <td class="line" data-tooltip>22</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>21</td>
+                          <td class="source">                    setter ? setter(base, i, src[i]) : (base[i] &#x3D; src[i]);</td>
                           
                         </tr>            <tr id="nua.js__23" class="hit">
                           <td class="line" data-tooltip>23</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                else {</td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__24" class="hit">
                           <td class="line" data-tooltip>24</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>21</td>
-                          <td class="source">                    setter ? setter(base, i, src[i]) : (base[i] &#x3D; src[i]);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="nua.js__25" class="hit">
                           <td class="line" data-tooltip>25</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>17</td>
+                          <td class="source">            for (; i &lt; src.length; i++) {</td>
                           
                         </tr>            <tr id="nua.js__26" class="hit">
                           <td class="line" data-tooltip>26</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                setter ? setter(base, i, src[i]) : (base[i] &#x3D; src[i]);</td>
                           
                         </tr>            <tr id="nua.js__27" class="hit">
                           <td class="line" data-tooltip>27</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>17</td>
-                          <td class="source">            for (; i &lt; src.length; i++) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="nua.js__28" class="hit">
                           <td class="line" data-tooltip>28</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                setter ? setter(base, i, src[i]) : (base[i] &#x3D; src[i]);</td>
+                          <td class="hits" data-tooltip>17</td>
+                          <td class="source">            base.splice(src.length);</td>
                           
                         </tr>            <tr id="nua.js__29" class="hit">
                           <td class="line" data-tooltip>29</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="nua.js__30" class="hit">
                           <td class="line" data-tooltip>30</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>17</td>
-                          <td class="source">            base.splice(src.length);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">        else {</td>
                           
                         </tr>            <tr id="nua.js__31" class="hit">
                           <td class="line" data-tooltip>31</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="hits" data-tooltip>62</td>
+                          <td class="source">            var basekeys &#x3D; Object.keys(base);</td>
                           
                         </tr>            <tr id="nua.js__32" class="hit">
                           <td class="line" data-tooltip>32</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">        else {</td>
+                          <td class="hits" data-tooltip>62</td>
+                          <td class="source">            for (var bI &#x3D; 0; bI &lt; basekeys.length; bI++) {</td>
                           
                         </tr>            <tr id="nua.js__33" class="hit">
                           <td class="line" data-tooltip>33</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>62</td>
-                          <td class="source">            var basekeys &#x3D; Object.keys(base);</td>
+                          <td class="hits" data-tooltip>107</td>
+                          <td class="source">                var baseval &#x3D; base[basekeys[bI]];</td>
                           
                         </tr>            <tr id="nua.js__34" class="hit">
                           <td class="line" data-tooltip>34</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>62</td>
-                          <td class="source">            for (var bI &#x3D; 0; bI &lt; basekeys.length; bI++) {</td>
+                          <td class="hits" data-tooltip>107</td>
+                          <td class="source">                var srcval &#x3D; src[basekeys[bI]];</td>
                           
                         </tr>            <tr id="nua.js__35" class="hit">
                           <td class="line" data-tooltip>35</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>107</td>
-                          <td class="source">                var baseval &#x3D; base[basekeys[bI]];</td>
+                          <td class="source">                var basetype &#x3D; null &#x3D;&#x3D;&#x3D; baseval ? &#x27;null&#x27; : typeof baseval;</td>
                           
                         </tr>            <tr id="nua.js__36" class="hit">
                           <td class="line" data-tooltip>36</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>107</td>
-                          <td class="source">                var srcval &#x3D; src[basekeys[bI]];</td>
+                          <td class="source">                var srctype &#x3D; null &#x3D;&#x3D;&#x3D; srcval ? &#x27;null&#x27; : typeof srcval;</td>
                           
                         </tr>            <tr id="nua.js__37" class="hit">
                           <td class="line" data-tooltip>37</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip>107</td>
-                          <td class="source">                var basetype &#x3D; null &#x3D;&#x3D;&#x3D; baseval ? &#x27;null&#x27; : typeof baseval;</td>
+                          <td class="source">                if (&#x27;object&#x27; &#x3D;&#x3D;&#x3D; basetype &amp;&amp; &#x27;object&#x27; &#x3D;&#x3D;&#x3D; srctype) {</td>
                           
                         </tr>            <tr id="nua.js__38" class="hit">
                           <td class="line" data-tooltip>38</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>107</td>
-                          <td class="source">                var srctype &#x3D; null &#x3D;&#x3D;&#x3D; srcval ? &#x27;null&#x27; : typeof srcval;</td>
+                          <td class="hits" data-tooltip>45</td>
+                          <td class="source">                    walk(baseval, srcval, d);</td>
                           
                         </tr>            <tr id="nua.js__39" class="hit">
                           <td class="line" data-tooltip>39</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>107</td>
-                          <td class="source">                if (&#x27;object&#x27; &#x3D;&#x3D;&#x3D; basetype &amp;&amp; &#x27;object&#x27; &#x3D;&#x3D;&#x3D; srctype) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__40" class="hit">
                           <td class="line" data-tooltip>40</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>45</td>
-                          <td class="source">                    walk(baseval, srcval, d);</td>
+                          <td class="hits" data-tooltip>62</td>
+                          <td class="source">                else if (void 0 &#x3D;&#x3D;&#x3D; srcval) {</td>
                           
                         </tr>            <tr id="nua.js__41" class="hit">
                           <td class="line" data-tooltip>41</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>21</td>
+                          <td class="source">                    if (!preserve) {</td>
                           
                         </tr>            <tr id="nua.js__42" class="hit">
                           <td class="line" data-tooltip>42</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>62</td>
-                          <td class="source">                else if (void 0 &#x3D;&#x3D;&#x3D; srcval) {</td>
+                          <td class="hits" data-tooltip>11</td>
+                          <td class="source">                        delete base[basekeys[bI]];</td>
                           
                         </tr>            <tr id="nua.js__43" class="hit">
                           <td class="line" data-tooltip>43</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>21</td>
-                          <td class="source">                    if (!preserve) {</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    }</td>
                           
                         </tr>            <tr id="nua.js__44" class="hit">
                           <td class="line" data-tooltip>44</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>11</td>
-                          <td class="source">                        delete base[basekeys[bI]];</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__45" class="hit">
                           <td class="line" data-tooltip>45</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                    }</td>
+                          <td class="source">                else {</td>
                           
                         </tr>            <tr id="nua.js__46" class="hit">
                           <td class="line" data-tooltip>46</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>41</td>
+                          <td class="source">                    setter</td>
                           
                         </tr>            <tr id="nua.js__47" class="hit">
                           <td class="line" data-tooltip>47</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                else {</td>
+                          <td class="source">                        ? setter(base, basekeys[bI], srcval)</td>
                           
                         </tr>            <tr id="nua.js__48" class="hit">
                           <td class="line" data-tooltip>48</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>41</td>
-                          <td class="source">                    setter</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                        : (base[basekeys[bI]] &#x3D; srcval);</td>
                           
                         </tr>            <tr id="nua.js__49" class="hit">
                           <td class="line" data-tooltip>49</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                        ? setter(base, basekeys[bI], srcval)</td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__50" class="hit">
                           <td class="line" data-tooltip>50</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                        : (base[basekeys[bI]] &#x3D; srcval);</td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="nua.js__51" class="hit">
                           <td class="line" data-tooltip>51</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="hits" data-tooltip>62</td>
+                          <td class="source">            var srckeys &#x3D; Object.keys(src);</td>
                           
                         </tr>            <tr id="nua.js__52" class="hit">
                           <td class="line" data-tooltip>52</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="hits" data-tooltip>62</td>
+                          <td class="source">            for (var sI &#x3D; 0; sI &lt; srckeys.length; sI++) {</td>
                           
                         </tr>            <tr id="nua.js__53" class="hit">
                           <td class="line" data-tooltip>53</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>62</td>
-                          <td class="source">            var srckeys &#x3D; Object.keys(src);</td>
+                          <td class="hits" data-tooltip>97</td>
+                          <td class="source">                if (void 0 &#x3D;&#x3D;&#x3D; base[srckeys[sI]]) {</td>
                           
                         </tr>            <tr id="nua.js__54" class="hit">
                           <td class="line" data-tooltip>54</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>62</td>
-                          <td class="source">            for (var sI &#x3D; 0; sI &lt; srckeys.length; sI++) {</td>
+                          <td class="hits" data-tooltip>11</td>
+                          <td class="source">                    if (setter) {</td>
                           
                         </tr>            <tr id="nua.js__55" class="hit">
                           <td class="line" data-tooltip>55</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>97</td>
-                          <td class="source">                if (void 0 &#x3D;&#x3D;&#x3D; base[srckeys[sI]]) {</td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">                        setter(base, srckeys[sI], src[srckeys[sI]]);</td>
                           
                         </tr>            <tr id="nua.js__56" class="hit">
                           <td class="line" data-tooltip>56</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>11</td>
-                          <td class="source">                    if (setter) {</td>
+                          <td class="hits" data-tooltip>4</td>
+                          <td class="source">                        if (null !&#x3D; src[srckeys[sI]] &amp;&amp;</td>
                           
                         </tr>            <tr id="nua.js__57" class="hit">
                           <td class="line" data-tooltip>57</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">                        setter(base, srckeys[sI], src[srckeys[sI]]);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                            (Array.isArray(src[srckeys[sI]]) ||</td>
                           
                         </tr>            <tr id="nua.js__58" class="hit">
                           <td class="line" data-tooltip>58</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>4</td>
-                          <td class="source">                        if (null !&#x3D; src[srckeys[sI]] &amp;&amp;</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                                &#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof src[srckeys[sI]])) {</td>
                           
                         </tr>            <tr id="nua.js__59" class="hit">
                           <td class="line" data-tooltip>59</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                            (Array.isArray(src[srckeys[sI]]) ||</td>
+                          <td class="hits" data-tooltip>2</td>
+                          <td class="source">                            walk(base[srckeys[sI]], src[srckeys[sI]], d);</td>
                           
                         </tr>            <tr id="nua.js__60" class="hit">
                           <td class="line" data-tooltip>60</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                                &#x27;object&#x27; &#x3D;&#x3D;&#x3D; typeof src[srckeys[sI]])) {</td>
+                          <td class="source">                        }</td>
                           
                         </tr>            <tr id="nua.js__61" class="hit">
                           <td class="line" data-tooltip>61</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>2</td>
-                          <td class="source">                            walk(base[srckeys[sI]], src[srckeys[sI]], d);</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                    }</td>
                           
                         </tr>            <tr id="nua.js__62" class="hit">
                           <td class="line" data-tooltip>62</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                        }</td>
+                          <td class="source">                    else {</td>
                           
                         </tr>            <tr id="nua.js__63" class="hit">
                           <td class="line" data-tooltip>63</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">                    }</td>
+                          <td class="hits" data-tooltip>7</td>
+                          <td class="source">                        base[srckeys[sI]] &#x3D; src[srckeys[sI]];</td>
                           
                         </tr>            <tr id="nua.js__64" class="hit">
                           <td class="line" data-tooltip>64</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                    else {</td>
+                          <td class="source">                    }</td>
                           
                         </tr>            <tr id="nua.js__65" class="hit">
                           <td class="line" data-tooltip>65</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip>7</td>
-                          <td class="source">                        base[srckeys[sI]] &#x3D; src[srckeys[sI]];</td>
+                          <td class="hits" data-tooltip></td>
+                          <td class="source">                }</td>
                           
                         </tr>            <tr id="nua.js__66" class="hit">
                           <td class="line" data-tooltip>66</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                    }</td>
+                          <td class="source">            }</td>
                           
                         </tr>            <tr id="nua.js__67" class="hit">
                           <td class="line" data-tooltip>67</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">                }</td>
+                          <td class="source">        }</td>
                           
                         </tr>            <tr id="nua.js__68" class="hit">
                           <td class="line" data-tooltip>68</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">            }</td>
+                          <td class="source">    }</td>
                           
                         </tr>            <tr id="nua.js__69" class="hit">
                           <td class="line" data-tooltip>69</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
-                          <td class="source">        }</td>
+                          <td class="source">}</td>
                           
                         </tr>            <tr id="nua.js__70" class="hit">
                           <td class="line" data-tooltip>70</td>
                           <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">    }</td>
+                          <td class="hits" data-tooltip>1</td>
+                          <td class="source">module.exports &#x3D; Nua;</td>
                           
                         </tr>            <tr id="nua.js__71" class="hit">
                           <td class="line" data-tooltip>71</td>
-                          <td class="lint empty"></td>
-                          <td class="hits" data-tooltip></td>
-                          <td class="source">};</td>
-                          
-                        </tr>            <tr id="nua.js__72" class="hit">
-                          <td class="line" data-tooltip>72</td>
                           <td class="lint empty"></td>
                           <td class="hits" data-tooltip></td>
                           <td class="source">//# sourceMappingURL&#x3D;nua.js.map</td>

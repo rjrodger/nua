@@ -4,7 +4,7 @@
 // TODO: is it necessary to copy scalar values?
 // TODO: test internal references
 
-export { Nua }
+export = Nua
 
 function Nua(base: any, src: any, opts?: any) {
   opts = opts || {}
