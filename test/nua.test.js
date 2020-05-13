@@ -19,8 +19,8 @@ lab.test('happy', () => {
 })
 
 lab.test('null-fields', () => {
-  var base = { a: 1, b: null, c: 4, d: 5 }
-  var src = { a: 2, b: 3, c: null, e: 6 }
+  var base = { a: 1, b: null, c: 4, d: 5, f: null }
+  var src = { a: 2, b: 3, c: null, e: 6, f:{g:7} }
 
   Nua(base, src)
 
@@ -30,6 +30,7 @@ lab.test('null-fields', () => {
     c: null, // override (null is just a value)
     // d is removed as not present in src
     e: 6, // defined in src
+    f:{g:7}, // override (null is just a value)
   })
 })
 
@@ -40,32 +41,32 @@ lab.test('depth', () => {
   var base0b = base0.b
   var base0d = base0.d
   var base0e = base0.d.e
-  Nua(base0, src, 4)
+  Nua(base0, src, {depth:4})
   expect(base0).equal(src)
   expect(base0b === base0.b).true()
   expect(base0d === base0.d).true()
   expect(base0e === base0.d.e).true()
 
   var base1 = { a: 1, b: { c: 2 }, d: { e: { f: 3 } } }
-  Nua(base1, src, 3)
+  Nua(base1, src, {depth:3})
   expect(base1).equal(src)
 
   var base2 = { a: 1, b: { c: 2 }, d: { e: { f: 3 } } }
-  Nua(base2, src, 2)
+  Nua(base2, src, {depth:2})
   expect(base2).equal({ a: 11, b: { c: 22 }, d: { e: { f: 3 } } })
 
   var base3 = { a: 1, b: { c: 2 }, d: { e: { f: 3 } } }
   var base3b = base3.b
   var base3d = base3.d
   var base3e = base3.d.e
-  Nua(base3, src, 1)
+  Nua(base3, src, {depth:1})
   expect(base3).equal({ a: 11, b: { c: 2 }, d: { e: { f: 3 } } })
   expect(base3b === base3.b).true()
   expect(base3d === base3.d).true()
   expect(base3e === base3.d.e).true()
 
   var base4 = { a: 1, b: { c: 2 }, d: { e: { f: 3 } } }
-  Nua(base4, src, 0)
+  Nua(base4, src, {depth:0})
   expect(base4).equal(src)
 })
 
@@ -142,15 +143,9 @@ lab.test('deep', () => {
     b: [2, [4], { g: [6] }],
   })
 
-  Nua(base, { a: 1, b: 2 })
+  Nua(base, { a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } } }, {preserve:true})
   expect(base).equal({
-    a: { c: 1, d: { e: 3, f: [5, { h: 7 }] } },
-    b: [2, [4], { g: [6] }],
-  })
-
-  Nua(base, { a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } }, b: 2 })
-  expect(base).equal({
-    a: { c: 1, d: { e: 3, f: [5, { h: 7 }] } },
+    a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } },
     b: [2, [4], { g: [6] }],
   })
 
@@ -226,6 +221,13 @@ lab.test('deep', () => {
   expect(src_b1 === base.b[1]).true()
   expect(src_b2 === base.b[2]).true()
   expect(src_b2g === base.b[2].g).true()
+
+
+  Nua(base, { a: 1 })
+  expect(base).equal({
+    a: 1
+  })
+
 })
 
 lab.test('setter', () => {
@@ -238,8 +240,7 @@ lab.test('setter', () => {
   Nua(
     base,
     { a: 2, b: [3, 4], c: 5, d: { e: 6, g: [7], h: null }, f: null, h: [8] },
-    0,
-    s0
+    { depth: 0, setter: s0 }
   )
   expect(base).equal({
     a: 3,
@@ -249,4 +250,18 @@ lab.test('setter', () => {
     f: null,
     h: [9],
   })
+})
+
+lab.test('preserve', () => {
+  var base = { a: 1, b: {c:2}, f: null }
+
+  Nua(base, {d:3}, {preserve:true})
+  expect(base).equal({ a: 1, b: {c:2}, d: 3, f: null })
+
+  Nua(base, {b:{c:4}}, {preserve:true})
+  expect(base).equal({ a: 1, b: {c:4}, d: 3, f: null })
+
+  Nua(base, {f:{g:5}}, {preserve:true})
+  expect(base).equal({ a: 1, b: {c:4}, d: 3, f:{g:5} })
+
 })
