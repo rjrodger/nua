@@ -13,9 +13,7 @@ const expect = Code.expect
 
 const Nua = require('..')
 
-
 describe('nua', function () {
-
   it('happy', () => {
     var base = { a: { b: 1 } }
     var base_a = base.a
@@ -151,7 +149,11 @@ describe('nua', function () {
       b: [2, [4], { g: [6] }],
     })
 
-    Nua(base, { a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } } }, { preserve: true })
+    Nua(
+      base,
+      { a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } } },
+      { preserve: true }
+    )
     expect(base).equal({
       a: { c: {}, d: { e: 3, f: [5, { h: 7 }] } },
       b: [2, [4], { g: [6] }],
@@ -175,7 +177,10 @@ describe('nua', function () {
     expect(base_b2g === base.b[2].g).true()
 
     Nua(base, { a: { c: 11, d: { e: 33, f: [55] } }, b: [22, [44], {}] })
-    expect(base).equal({ a: { c: 11, d: { e: 33, f: [55] } }, b: [22, [44], {}] })
+    expect(base).equal({
+      a: { c: 11, d: { e: 33, f: [55] } },
+      b: [22, [44], {}],
+    })
     expect(base_a === base.a).true()
     expect(base_ad === base.a.d).true()
     expect(base_adf === base.a.d.f).true()

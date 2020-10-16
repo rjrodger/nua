@@ -44,7 +44,6 @@ function Nua(base: any, src: any, opts?: any) {
 
         if ('object' === basetype && 'object' === srctype) {
           walk(baseval, srcval, d)
-
         } else if (void 0 === srcval) {
           if (!preserve) {
             delete base[basekeys[bI]]
