@@ -32,12 +32,13 @@
     "@hapi/code": "^8.0.2",
     "@hapi/lab": "^24.0.0",
     "benchmark": "^2.1.4",
+    "browserify": "^17.0.0",
     "coveralls": "^3.1.0",
     "hapi-lab-shim": "0.0.2",
+    "lab-transform-typescript": "^3.0.1",
     "prettier": "^2.1.2",
     "serve": "^11.3.2",
     "tinyify": "^3.0.0",
-    "lab-transform-typescript": "^3.0.1",
     "typescript": "^4.0.3"
   },
   "files": [
