@@ -1,19 +1,13 @@
 /* Copyright (c) 2018-2020 Richard Rodger and other contributors */
 'use strict'
 
-var Lab = require('@hapi/lab')
-Lab = null != Lab.script ? Lab : require('hapi-lab-shim')
-
+import { describe, it } from 'node:test'
 const Code = require('@hapi/code')
-
-const lab = (exports.lab = Lab.script())
-const describe = lab.describe
-const it = lab.it
 const expect = Code.expect
 
-const Nua = require('..')
+const Nua = require('../dist/nua')
 
-describe('nua', function () {
+describe('nua', function() {
   it('happy', () => {
     var base = { a: { b: 1 } }
     var base_a = base.a
@@ -94,7 +88,7 @@ describe('nua', function () {
 
     Nua(base, { a: { b: 1 } })
     var a = base.a
-    a.b = 1
+      ; (a as any).b = 1
     expect(base).equal({ a: a })
     expect(base_a === base.a).true()
   })
@@ -131,7 +125,7 @@ describe('nua', function () {
     var base_b = base.b
     var base_b1 = base.b[1]
     var base_b2 = base.b[2]
-    var base_b2g = base.b[2].g
+    var base_b2g = (base.b[2] as any).g
 
     Nua(null, null)
     Nua(null, 1)
@@ -174,7 +168,7 @@ describe('nua', function () {
     expect(base_b === base.b).true()
     expect(base_b1 === base.b[1]).true()
     expect(base_b2 === base.b[2]).true()
-    expect(base_b2g === base.b[2].g).true()
+    expect(base_b2g === (base.b[2] as any).g).true()
 
     Nua(base, { a: { c: 11, d: { e: 33, f: [55] } }, b: [22, [44], {}] })
     expect(base).equal({
@@ -219,7 +213,7 @@ describe('nua', function () {
     var src_b = src.b
     var src_b1 = src.b[1]
     var src_b2 = src.b[2]
-    var src_b2g = src.b[2].g
+    var src_b2g = (src.b[2] as any).g
 
     Nua(base, src)
     expect(base).equal({
@@ -233,7 +227,7 @@ describe('nua', function () {
     expect(src_b === base.b).true()
     expect(src_b1 === base.b[1]).true()
     expect(src_b2 === base.b[2]).true()
-    expect(src_b2g === base.b[2].g).true()
+    expect(src_b2g === (base.b[2] as any).g).true()
 
     Nua(base, { a: 1 })
     expect(base).equal({
@@ -244,7 +238,7 @@ describe('nua', function () {
   it('setter', () => {
     var base = { a: 1, b: [2] }
 
-    function s0(obj, key, val) {
+    function s0(obj: any, key: any, val: any) {
       obj[key] = 'object' === typeof val ? val : val + 1
     }
 

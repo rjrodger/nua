@@ -1,4 +1,4 @@
-/* Copyright (c) 2018-2020 Richard Rodger and other contributors */
+/* Copyright (c) 2018-2025 Richard Rodger and other contributors */
 'use strict'
 
 // TODO: is it necessary to copy scalar values?
