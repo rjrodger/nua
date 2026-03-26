@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/rjrodger/nua#readme",
   "devDependencies": {
-    "@hapi/code": "^9.0.3",
     "@types/node": "^24.10.1",
     "typescript": "^5.9.3"
   },
