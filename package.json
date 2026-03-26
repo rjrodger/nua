@@ -1,6 +1,6 @@
 {
   "name": "nua",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Reference-preserving merge",
   "main": "dist/nua.js",
   "types": "dist/nua.d.ts",
