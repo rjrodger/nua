@@ -9,6 +9,9 @@ package nua
 
 import "math"
 
+// Version is the current version of the nua Go module.
+const Version = "0.1.21"
+
 // Setter overrides scalar assignment during the merge. It receives the
 // parent container (map[string]any or []any), the key (string for maps,
 // int for slices), and the value being assigned.
